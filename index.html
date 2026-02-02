@@ -133,43 +133,65 @@
   <canvas id="confettiCanvas"></canvas>
 
   <main class="card">
-    <!-- ANIMAL WITH HEART -->
-    <svg class="art" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="fur" x1="0" x2="1">
-          <stop offset="0" stop-color="#f7c7a1"/>
-          <stop offset="1" stop-color="#f2a97b"/>
-        </linearGradient>
-        <linearGradient id="heart" x1="0" x2="1">
-          <stop offset="0" stop-color="#ff4d7d"/>
-          <stop offset="1" stop-color="#ff1f68"/>
-        </linearGradient>
-      </defs>
+    <!-- HUSKY WITH HEART -->
+<svg class="art" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="furDark" x1="0" x2="1">
+      <stop offset="0" stop-color="#9ca3af"/>
+      <stop offset="1" stop-color="#6b7280"/>
+    </linearGradient>
+    <linearGradient id="furLight" x1="0" x2="1">
+      <stop offset="0" stop-color="#f3f4f6"/>
+      <stop offset="1" stop-color="#e5e7eb"/>
+    </linearGradient>
+    <linearGradient id="heart" x1="0" x2="1">
+      <stop offset="0" stop-color="#ff4d7d"/>
+      <stop offset="1" stop-color="#ff1f68"/>
+    </linearGradient>
+  </defs>
 
-      <path d="M250 50 C250 33 270 25 282 38
-               C294 25 314 33 314 50
-               C314 78 282 92 282 106
-               C282 92 250 78 250 50Z"
-            fill="url(#heart)"/>
+  <!-- Heart -->
+  <path d="M210 40
+           C210 22 230 18 242 32
+           C254 18 274 22 274 40
+           C274 70 242 86 242 102
+           C242 86 210 70 210 40Z"
+        fill="url(#heart)"/>
 
-      <path d="M90 120 C90 70 140 40 190 60
-               C240 40 290 70 290 120
-               C290 180 240 210 190 210
-               C140 210 90 180 90 120Z"
-            fill="url(#fur)"/>
+  <!-- Head -->
+  <ellipse cx="160" cy="145" rx="90" ry="80" fill="url(#furDark)"/>
 
-      <path d="M110 92 L95 55 L140 78 Z" fill="#f2a97b"/>
-      <path d="M270 92 L285 55 L240 78 Z" fill="#f2a97b"/>
+  <!-- Face mask -->
+  <ellipse cx="160" cy="165" rx="55" ry="45" fill="url(#furLight)"/>
 
-      <circle cx="160" cy="130" r="8"/>
-      <circle cx="220" cy="130" r="8"/>
+  <!-- Ears -->
+  <path d="M95 70 L60 20 L120 60 Z" fill="#6b7280"/>
+  <path d="M225 70 L260 20 L200 60 Z" fill="#6b7280"/>
 
-      <path d="M190 144 C186 144 182 148 182 152
-               C182 160 190 164 190 170
-               C190 164 198 160 198 152
-               C198 148 194 144 190 144Z"
-            fill="#ff7aa2"/>
-    </svg>
+  <!-- Inner ears -->
+  <path d="M95 70 L75 35 L110 60 Z" fill="#d1d5db"/>
+  <path d="M225 70 L245 35 L210 60 Z" fill="#d1d5db"/>
+
+  <!-- Eyes -->
+  <circle cx="135" cy="145" r="7"/>
+  <circle cx="185" cy="145" r="7"/>
+
+  <!-- Nose -->
+  <path d="M160 158
+           C154 158 150 162 150 166
+           C150 172 160 176 160 176
+           C160 176 170 172 170 166
+           C170 162 166 158 160 158Z"
+        fill="#111827"/>
+
+  <!-- Smile -->
+  <path d="M160 176
+           C150 186 140 188 130 186"
+        stroke="#111827" stroke-width="3" fill="none"/>
+  <path d="M160 176
+           C170 186 180 188 190 186"
+        stroke="#111827" stroke-width="3" fill="none"/>
+</svg>
 
     <h1>nirali will you be my valentine?</h1>
 
