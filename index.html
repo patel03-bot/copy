@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -51,15 +50,15 @@
     }
 
     .art {
-      width: min(260px, 80vw);
-      margin: 0 auto 10px;
+      width: min(220px, 70vw);
+      margin: 0 auto 8px;
       display: block;
       filter: drop-shadow(0 10px 14px rgba(0,0,0,.12));
     }
 
     h1 {
-      font-size: clamp(26px, 4vw, 44px);
-      margin: 12px 0 18px;
+      font-size: clamp(24px, 3.8vw, 40px);
+      margin: 10px 0 16px;
     }
 
     .button-zone {
@@ -74,13 +73,13 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      padding: 16px 24px;
-      font-size: 18px;
+      padding: 12px 24px;
+      font-size: 16px;
       font-weight: 800;
       border-radius: 999px;
       border: none;
       cursor: pointer;
-      box-shadow: 0 10px 24px rgba(0,0,0,.14);
+      box-shadow: 0 8px 20px rgba(0,0,0,.12);
       user-select: none;
       -webkit-tap-highlight-color: transparent;
       transition: transform .12s ease, background .12s ease;
@@ -112,19 +111,328 @@
     }
 
     .result h2 {
-      font-size: clamp(30px, 4.5vw, 46px);
-      margin: 10px 0;
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 8px 0;
     }
 
     .fireworks {
-      width: min(380px, 90vw);
+      width: min(280px, 70vw);
       margin: 0 auto;
       display: block;
+    }
+
+    /* GIFT BUTTON */
+    #giftBtn {
+      position: static;
+      margin-top: 15px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background: var(--yes);
+      color: white;
+      transform: none;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    #giftBtn:hover {
+      background: var(--yesHover);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     @keyframes pop {
       from { transform: scale(.96); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
+    }
+
+    /* ENVELOPE PAGE */
+    .envelope-page {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+      z-index: 10000;
+    }
+
+    .container-envelope {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .container-envelope > .envelope-wrapper {
+      background: #f5edd1;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .container-envelope .envelope-wrapper .envelope {
+      position: relative;
+      width: 300px;
+      height: 230px;
+    }
+
+    .envelope-wrapper > .envelope::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      border-top: 130px solid #ecdeb8;
+      border-right: 150px solid transparent;
+      border-left: 150px solid transparent;
+      transform-origin: top;
+      transition: all 0.5s ease-in-out 0.7s;
+    }
+
+    .container-envelope .envelope-wrapper .envelope::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      width: 0;
+      height: 0;
+      border-top: 130px solid transparent;
+      border-right: 150px solid #e6cfa7;
+      border-bottom: 100px solid #e6cfa7;
+      border-left: 150px solid #e6cfa7;
+    }
+
+    .envelope > .letter {
+      position: absolute;
+      right: 20%;
+      bottom: 0;
+      width: 54%;
+      height: 80%;
+      background: #fff;
+      text-align: center;
+      transition: all 1s ease-in-out;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      padding: 12px 8px 25px 8px;
+      overflow-y: auto;
+    }
+
+    .container-envelope .envelope-wrapper .envelope .letter .text {
+      font-size: clamp(9px, 2vw, 11px);
+      font-weight: 600;
+      color: #ff3b7a;
+      text-align: left;
+      line-height: 1.4;
+      height: auto;
+      padding-bottom: 10px;
+    }
+
+    .heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 15px;
+      height: 15px;
+      background: #ff3b7a;
+      z-index: 999;
+      transform: translate(-50%, -20%) rotate(-45deg);
+      transition: transform 0.5s ease-in-out 1s;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #ff3b7a;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -7.5px;
+    }
+
+    .heart::after {
+      right: -7.5px;
+    }
+
+    .flap .envelope::before {
+      transform: rotateX(180deg);
+      z-index: 0;
+    }
+
+    .flap .envelope .letter {
+      bottom: 180px;
+      transform: scale(1.5);
+      transition-delay: 1s;
+    }
+
+    .flap .heart {
+      transform: translate(-50%, -20%) rotate(90deg);
+      transition-delay: 0.4s;
+    }
+
+    .envelope-instruction {
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 16px;
+      font-weight: 600;
+      color: #888;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    /* SURPRISE BUTTON - exactly matches gift button */
+    #surpriseBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 800;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: var(--yes);
+      color: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,.12);
+      animation: popIn 0.5s ease 1s forwards;
+      opacity: 0;
+      z-index: 10001;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .12s ease, background .12s ease;
+    }
+
+    #surpriseBtn:hover {
+      background: var(--yesHover);
+      transform: translateX(-50%);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateX(-50%) scale(0.9); }
+      to { opacity: 1; transform: translateX(-50%) scale(1); }
+    }
+
+    /* LANTERNS PAGE */
+    .lanterns-page {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(to bottom, #0a0e27 0%, #1a1f3a 50%, #2d1b3d 100%);
+      z-index: 10002;
+      overflow: hidden;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .lantern-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .lantern {
+      position: absolute;
+      width: 60px;
+      height: 80px;
+      bottom: -100px;
+      animation: float-up 15s ease-in infinite;
+      filter: drop-shadow(0 0 20px rgba(255,200,100,0.8));
+    }
+
+    @keyframes float-up {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) translateX(var(--drift));
+        opacity: 0;
+      }
+    }
+
+    .lantern-body {
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #fff4e6 0%, #ffb74d 40%, #ff9800 100%);
+      border-radius: 10px;
+      position: relative;
+      box-shadow: inset 0 0 20px rgba(255,255,200,0.8),
+                  0 0 30px rgba(255,200,100,0.6);
+    }
+
+    .lantern-top,
+    .lantern-bottom {
+      width: 70%;
+      height: 8px;
+      background: #8b4513;
+      position: absolute;
+      left: 15%;
+      border-radius: 4px;
+    }
+
+    .lantern-top { top: -4px; }
+    .lantern-bottom { bottom: -4px; }
+
+    .lantern-wire {
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background: #666;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -24px;
+    }
+
+    .lanterns-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 900;
+      color: #fff;
+      text-align: center;
+      text-shadow: 0 0 20px rgba(255,255,255,0.5),
+                   0 0 40px rgba(255,200,100,0.3);
+      z-index: 10;
+      animation: fadeInMessage 2s ease 1s forwards;
+      opacity: 0;
+      letter-spacing: 4px;
+    }
+
+    @keyframes fadeInMessage {
+      to { opacity: 1; }
     }
   </style>
 </head>
@@ -132,68 +440,69 @@
 <body>
   <canvas id="confettiCanvas"></canvas>
 
-  <main class="card">
+  <!-- MAIN PAGE -->
+  <main class="card" id="mainPage">
     <!-- HUSKY WITH HEART -->
-<svg class="art" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="furDark" x1="0" x2="1">
-      <stop offset="0" stop-color="#9ca3af"/>
-      <stop offset="1" stop-color="#6b7280"/>
-    </linearGradient>
-    <linearGradient id="furLight" x1="0" x2="1">
-      <stop offset="0" stop-color="#f3f4f6"/>
-      <stop offset="1" stop-color="#e5e7eb"/>
-    </linearGradient>
-    <linearGradient id="heart" x1="0" x2="1">
-      <stop offset="0" stop-color="#ff4d7d"/>
-      <stop offset="1" stop-color="#ff1f68"/>
-    </linearGradient>
-  </defs>
+    <svg class="art" viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="furDark" x1="0" x2="1">
+          <stop offset="0" stop-color="#9ca3af"/>
+          <stop offset="1" stop-color="#6b7280"/>
+        </linearGradient>
+        <linearGradient id="furLight" x1="0" x2="1">
+          <stop offset="0" stop-color="#f3f4f6"/>
+          <stop offset="1" stop-color="#e5e7eb"/>
+        </linearGradient>
+        <linearGradient id="heart" x1="0" x2="1">
+          <stop offset="0" stop-color="#ff4d7d"/>
+          <stop offset="1" stop-color="#ff1f68"/>
+        </linearGradient>
+      </defs>
 
-  <!-- Heart -->
-  <path d="M210 40
-           C210 22 230 18 242 32
-           C254 18 274 22 274 40
-           C274 70 242 86 242 102
-           C242 86 210 70 210 40Z"
-        fill="url(#heart)"/>
+      <!-- Heart -->
+      <path d="M210 40
+               C210 22 230 18 242 32
+               C254 18 274 22 274 40
+               C274 70 242 86 242 102
+               C242 86 210 70 210 40Z"
+            fill="url(#heart)"/>
 
-  <!-- Head -->
-  <ellipse cx="160" cy="145" rx="90" ry="80" fill="url(#furDark)"/>
+      <!-- Head -->
+      <ellipse cx="160" cy="145" rx="90" ry="80" fill="url(#furDark)"/>
 
-  <!-- Face mask -->
-  <ellipse cx="160" cy="165" rx="55" ry="45" fill="url(#furLight)"/>
+      <!-- Face mask -->
+      <ellipse cx="160" cy="165" rx="55" ry="45" fill="url(#furLight)"/>
 
-  <!-- Ears -->
-  <path d="M95 70 L60 20 L120 60 Z" fill="#6b7280"/>
-  <path d="M225 70 L260 20 L200 60 Z" fill="#6b7280"/>
+      <!-- Ears -->
+      <path d="M95 70 L60 20 L120 60 Z" fill="#6b7280"/>
+      <path d="M225 70 L260 20 L200 60 Z" fill="#6b7280"/>
 
-  <!-- Inner ears -->
-  <path d="M95 70 L75 35 L110 60 Z" fill="#d1d5db"/>
-  <path d="M225 70 L245 35 L210 60 Z" fill="#d1d5db"/>
+      <!-- Inner ears -->
+      <path d="M95 70 L75 35 L110 60 Z" fill="#d1d5db"/>
+      <path d="M225 70 L245 35 L210 60 Z" fill="#d1d5db"/>
 
-  <!-- Eyes -->
-  <circle cx="135" cy="145" r="7"/>
-  <circle cx="185" cy="145" r="7"/>
+      <!-- Eyes -->
+      <circle cx="135" cy="145" r="7"/>
+      <circle cx="185" cy="145" r="7"/>
 
-  <!-- Nose -->
-  <path d="M160 158
-           C154 158 150 162 150 166
-           C150 172 160 176 160 176
-           C160 176 170 172 170 166
-           C170 162 166 158 160 158Z"
-        fill="#111827"/>
+      <!-- Nose -->
+      <path d="M160 158
+               C154 158 150 162 150 166
+               C150 172 160 176 160 176
+               C160 176 170 172 170 166
+               C170 162 166 158 160 158Z"
+            fill="#111827"/>
 
-  <!-- Smile -->
-  <path d="M160 176
-           C150 186 140 188 130 186"
-        stroke="#111827" stroke-width="3" fill="none"/>
-  <path d="M160 176
-           C170 186 180 188 190 186"
-        stroke="#111827" stroke-width="3" fill="none"/>
-</svg>
+      <!-- Smile -->
+      <path d="M160 176
+               C150 186 140 188 130 186"
+            stroke="#111827" stroke-width="3" fill="none"/>
+      <path d="M160 176
+               C170 186 180 188 190 186"
+            stroke="#111827" stroke-width="3" fill="none"/>
+    </svg>
 
-    <h1>Hetanshi will you be my valentine?</h1>
+    <h1> Darshi will you be my valentine?</h1>
 
     <section class="button-zone" id="zone">
       <button id="yesBtn">Yes</button>
@@ -201,17 +510,43 @@
     </section>
 
     <!-- HINT -->
-    <div class="hint" id="hint">“No” seems a bit shy 😈</div>
+    <div class="hint" id="hint">"No" seems to be shy like you. Now you can't even spam No the way you always do hehe. </div>
 
     <section class="result" id="result">
-      <h2>YAY! 🎉</h2>
+      <h2>YAYY I KNEW YOU'D SAY YES LESGOO!! 🎉</h2>
       <img
-  class="fireworks"
-  src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExemxpZGtiejNmYXl2N3ZidDlha2JzYWNyeG9wam44bjAxbDlqNG9qZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rjkJD1v80CjYs/giphy.gif"
-  alt="Meme"
-/>
+        class="fireworks"
+        src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzAwcHRhazhtNDJ3Zm84bXQyZHh3dmtiZGpldWF5YTlvYWJmcDY4dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XCgEmPVlqqv4wyJIlY/giphy.gif"
+        alt="Meme"
+      />
+      <button id="giftBtn">I have a gift for you </button>
     </section>
   </main>
+
+  <!-- ENVELOPE PAGE -->
+  <div class="envelope-page" id="envelopePage">
+    <div class="container-envelope">
+      <div class="envelope-wrapper" id="envelopeWrapper">
+        <div class="envelope">
+          <div class="letter">
+            <div class="text">
+             I don’t think you understand how easy it is for me to like you. I swear, you make things so simple and easy for me. No matter how complicated things might seem sometimes, the way I feel when I’m with you is simple. No matter what’s going on, no matter how complicated life gets, the moment I’m with you… it just feels easy. Like everything quiets down. And honestly, I don’t think you realize what you do to me. Every time I look into your eyes, it just makes sense everything just makes sense. The way you look at me, the way you smile, the way you exist so effortlessly, the way you’re just you, the way you are just all of you… it’s dangerous In the best way and it’s just amazing you’re just amazing I just love all of it and I like you I really do. So much. More than I admit and show, idk why cause it’s not that I don’t want to admit or show you how much I like you but it’s probably cause we have this weird thing going on where we’re both just competing, acting like we don’t care trying to see who cares less or likes the other less but I don’t want to do that anymore. So I guess I’ll say it first I really, really care about you, all of you. Your good days, your quieter days, the parts of you that you show the world, and the parts you keep to yourself. I want it all, because it’s you. I want to fully learn you, understand you and get to know you in ways nobody’s even thought of getting to know before. When I say I want to get to know you better I genuinely mean it I want to know everything about you even the things you might think are irrelevant. There’s something about you, something I can’t fully explain on this stupid letter and would much rather do in person, but it pulls me in every time. I don’t just want the perfect moments, I want the real ones too. The laughs, the late-night talks, the little things I want it all w you. I want everything with you. I want to be the person who makes you feel adored… the person who reminds you how special you are, even when you forget, I want to be the guy you go to or call first when something goes wrong even if it’s as small as your flush not working, your shoe not fitting . I don’t just want a relationship out of this I want everything I want to be your best friend your everything your all in one dawg. You mean so much more to me than I can ever put into words, but I hope you can feel it in the way I look at you, the way I think about you, the way I talk to you the way I talk about you just the way I am around you the way I’m me when I’m with you and in all the ways I want to be there for you. All I want is the chance to make you smile, to make you feel loved and appreciated and just happy, and to make you feel as special as you truly are. So yeah… I know things can feel uncertain or scary sometimes, but I want you to know that being with you, trying with you, figuring things out with you is something that will always be worth it to me. So yeah, maybe at the end of the day it’s just a leap of faith, but if it’s with you? I’d jump without thinking twice I’d take that leap with you in a heartbeat. But nah look I know you don't like the idea of me constantly being like this talking about us and our feelings and what we are and all that shit all the time and i know i said i won't bring this type of stuff up again but i just wanted to make you happy and make sure you have a good time and i just wanted to make this whole thing just a sick moment so don't worry about it don't take this as some sort of added pressure or whatever i don't mean to make this overwhelming for you like in a way where you just feel bummed i just wanted to make you feel nice that's it so don't even stress it as me asking you for anything or just even asking you any dumbass question just have fun with it and let's just get to know each other and have fun while doing it. Just give yourself, give me, give us a chance whatever that means for you.
+            </div>
+          </div>
+        </div>
+        <div class="heart" id="heart"></div>
+      </div>
+    </div>
+    <p class="envelope-instruction">Click the heart!</p>
+    <button id="surpriseBtn">Ok one last surprise </button>
+  </div>
+
+  <!-- LANTERNS PAGE -->
+  <div class="lanterns-page" id="lanternsPage">
+    <div class="stars" id="stars"></div>
+    <div class="lantern-container" id="lanternContainer"></div>
+    <div class="lanterns-message">Look outside your room window </div>
+  </div>
 
   <script>
     const zone = document.getElementById("zone");
@@ -219,6 +554,19 @@
     const noBtn = document.getElementById("noBtn");
     const result = document.getElementById("result");
     const hint = document.getElementById("hint");
+    const giftBtn = document.getElementById("giftBtn");
+    const mainPage = document.getElementById("mainPage");
+    const envelopePage = document.getElementById("envelopePage");
+    const envelopeWrapper = document.getElementById("envelopeWrapper");
+    const heart = document.getElementById("heart");
+    const surpriseBtn = document.getElementById("surpriseBtn");
+    const lanternsPage = document.getElementById("lanternsPage");
+    const lanternContainer = document.getElementById("lanternContainer");
+    const starsContainer = document.getElementById("stars");
+
+    // Debug logging
+    console.log("Heart element:", heart);
+    console.log("Envelope wrapper:", envelopeWrapper);
 
     /* ---------- CONFETTI ---------- */
     const confettiCanvas = document.getElementById("confettiCanvas");
@@ -268,7 +616,7 @@
     /* ---------- YES BUTTON GROWS ---------- */
     let yesScale = 1;
     function growYes() {
-      yesScale = Math.min(2.2, yesScale + 0.1);
+      yesScale = Math.min(3, yesScale + 0.1);
       yesBtn.style.transform = `translateY(-50%) scale(${yesScale})`;
     }
 
@@ -314,13 +662,104 @@
     /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
       zone.style.display = "none";
-      hint.style.display = "none";     // HIDE THE HINT
+      hint.style.display = "none";
       result.style.display = "block";
       resizeConfettiCanvas();
       fullScreenConfetti();
     });
+
+    /* ---------- GIFT BUTTON ---------- */
+    giftBtn.addEventListener("click", () => {
+      mainPage.style.display = "none";
+      envelopePage.style.display = "block";
+    });
+
+    /* ---------- ENVELOPE CLICK ---------- */
+    if (heart) {
+      heart.addEventListener("click", (e) => {
+        e.stopPropagation();
+        console.log("Heart clicked!");
+        envelopeWrapper.classList.toggle("flap");
+        console.log("Flap class:", envelopeWrapper.classList.contains("flap"));
+        // Show surprise button after letter appears
+        if (envelopeWrapper.classList.contains("flap")) {
+          setTimeout(() => {
+            surpriseBtn.style.display = "block";
+          }, 2000);
+        }
+      });
+    } else {
+      console.error("Heart element not found!");
+    }
+
+    // Backup: click anywhere on envelope wrapper
+    envelopeWrapper.addEventListener("click", () => {
+      console.log("Envelope wrapper clicked!");
+      envelopeWrapper.classList.toggle("flap");
+      if (envelopeWrapper.classList.contains("flap")) {
+        setTimeout(() => {
+          surpriseBtn.style.display = "block";
+        }, 2000);
+      }
+    });
+
+    /* ---------- SURPRISE BUTTON ---------- */
+    surpriseBtn.addEventListener("click", () => {
+      envelopePage.style.display = "none";
+      lanternsPage.style.display = "block";
+      createStars();
+      createLanterns();
+    });
+
+    /* ---------- CREATE STARS ---------- */
+    function createStars() {
+      for (let i = 0; i < 150; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        const size = Math.random() * 3 + 1;
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.top = Math.random() * 100 + "%";
+        star.style.animationDelay = Math.random() * 3 + "s";
+        starsContainer.appendChild(star);
+      }
+    }
+
+    /* ---------- CREATE LANTERNS ---------- */
+    function createLanterns() {
+      const numLanterns = 30;
+      
+      for (let i = 0; i < numLanterns; i++) {
+        setTimeout(() => {
+          const lantern = document.createElement("div");
+          lantern.className = "lantern";
+          
+          // Random horizontal position
+          lantern.style.left = Math.random() * 100 + "%";
+          
+          // Random delay
+          lantern.style.animationDelay = Math.random() * 5 + "s";
+          
+          // Random drift
+          const drift = (Math.random() - 0.5) * 200;
+          lantern.style.setProperty("--drift", drift + "px");
+          
+          // Random size variation
+          const scale = 0.7 + Math.random() * 0.6;
+          lantern.style.transform = `scale(${scale})`;
+          
+          lantern.innerHTML = `
+            <div class="lantern-wire"></div>
+            <div class="lantern-top"></div>
+            <div class="lantern-body"></div>
+            <div class="lantern-bottom"></div>
+          `;
+          
+          lanternContainer.appendChild(lantern);
+        }, i * 300);
+      }
+    }
   </script>
 </body>
 </html>
-
-
